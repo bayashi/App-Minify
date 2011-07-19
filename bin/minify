@@ -1,0 +1,79 @@
+#!perl -w
+use strict;
+use warnings;
+use App::Minify;
+
+App::Minify->run(@ARGV);
+
+__END__
+
+=encoding UTF-8
+
+=head1 NAME
+
+minify - minify CSS and JavaScript
+
+
+=head1 SYNOPSIS
+
+minify [options] FILES
+
+Simplest sample:
+
+    minify foo.orig.css, and put result STDOUT
+    $ minify foo.orig.css
+
+Options:
+
+    -s --src-file    source files
+       --css         specify source files are CSS
+       --js          specify source files are JavaScript
+       --javascript  same as --js
+    -o --out-file    output file
+    -b --backup      make backup (if output file exists)
+    -q --quiet       without STDOUT
+    -h --help        show this help
+    -v --version     show version
+
+Samples:
+
+    specify source files(these are united)
+    $ minify -o foo.css -s foo.orig.css bar.orig.css
+
+    backup output file
+    $ minify  -b -o foo.css foo.orig.css
+
+    no STDOUT
+    $ minify  -q -o foo.css foo.orig.css
+
+CONFIGURATION:
+
+F<minify> will look for a configuration file before reading its command line parameters.
+The default location is C<$HOME/.minify/config>
+but if the MINIFY_DIR environment variable is set, F<minify> will look for C<config> in that directory.
+
+The configuration file is just a list of names and values, separated by colons.
+Values that take lists are just space separated.
+
+A sample configuration file might read:
+
+    backup_dir: /tmp/minify/
+
+
+=head1 AUTHOR
+
+Dai Okabayashi E<lt>bayashi@cpan.orgE<gt>
+
+
+=head1 SEE ALSO
+
+L<App::Minify>
+
+
+=head1 LICENSE
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+
+
+=cut
