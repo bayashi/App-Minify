@@ -21,6 +21,7 @@ my $builder = Module::Build->new(
         'File::Spec' => 0,
         'File::Basename' => 0,
     },
+    script_files        => [ 'bin/minify' ],
     add_to_cleanup      => [ 'App-Minify-*' ],
     meta_merge     => {
       resources => {
