@@ -135,7 +135,7 @@ sub _minify {
     my ($self, %config) = @_;
 
     if ($config{backup} && $config{out} && -e $config{out}) {
-        $self->_backup($config{out}, $config{backup});
+        $self->_backup($config{out}, $config{backup_dir});
     }
 
     my $lf = '';
